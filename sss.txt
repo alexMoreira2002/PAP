@@ -1,0 +1,28 @@
+Create Table Products(
+REF nchar(7) primary key check (ISNUMERIC(REF) = 1),
+Nome nvarchar(100) not null,
+Marca nvarchar(50) not null,
+Preco int CHECK(ISNUMERIC(Preco) = 1) not null,
+Tamanho nchar(1) CHECK(ISNUMERIC(Tamanho) = 0),
+Tipo smallint not null
+)
+
+Create Table Utilizador(
+Nome nvarchar(100) not null,
+Email nvarchar(100) UNIQUE CHECK(Email LIKE '%_@_%.%') PRIMARY KEY,
+Perfil bit not null default(0),
+dataRegisto datetime DEFAULT(GETDATE()),
+Pass nchar(50) not null,
+Sexo nchar(1) CHECK(Sexo IN ('F','M','O'))
+CodPostal nchar(8) CHECK(CodPostal Like ____-___) AND ISNUMERIC(CodPostal = 1)
+)
+
+Create Table Compra(
+N_Compra int identity(1,1) primary key,
+Data_compra date default(GETDATE()),
+Data_chegada date,
+Nome_cliente nvarchar(100),
+Email_cliente nvarchar(100),
+Morada_cliente nvarchar(100),
+EAN_Produto nchar(13)
+)

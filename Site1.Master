@@ -1,0 +1,146 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="FinalTeste.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>AgronelasON</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+        <link href="css/shop-homepage.css" rel="stylesheet">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" style="color: green" href="Inicial.aspx">AgronelasON</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="Inicial.aspx">Inicial
+              <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <%if (Session["user"] != null)
+                              {%>                               
+                                <%if (Session["Perfil"].ToString() == "0")
+                                    {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Carrinho.aspx?NIF=<%# Session["NIF"].ToString()%>">Carrinho</a>
+                                </li>
+                                <%
+                                  }%>
+                                <%else if (Session["Perfil"].ToString() == "1")
+                                    {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Encomendas.aspx">Encomendas</a>
+                                </li>
+                                <%} %>
+                                <%else if (Session["Perfil"].ToString() == "2")
+                                    {%>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Encomendas.aspx">Encomendas</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Registar.aspx">Registar Funcionario</a>
+                                </li>
+                                <%} %>
+                                <li class="nav-item" style="text-decoration: underline">
+                                    <label style="color: white; font-size: 17px; padding-top: 8px; border-bottom: solid"><% Response.Write(Session["user"].ToString()); %></label>
+                                </li>                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="Logout.aspx">Log Out</a>
+                                </li>
+                                <%} %>
+                            <%else
+                              {%>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Login.aspx">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Registar.aspx">Registar</a>
+                            </li>
+                            <%} %>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page Content -->
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-3">
+                        <div class="list-group" style="padding-top: 30px">
+                            <a href="Pesquisa.aspx" class="list-group-item" style="color: green">Pesquisa</a>
+                            <a href="Categorias.aspx" class="list-group-item" style="color: green">Categorias</a>
+                        </div>
+
+                    </div>
+                    <!-- /.col-lg-3 -->
+
+                    <div class="col-lg-9">
+
+                        <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
+                            </ol>
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <img class="d-block img-fluid" src="Fotos/Logo1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                        </div>
+                        <!-- /.row -->
+
+                    </div>
+                    <!-- /.col-lg-9 -->
+
+                </div>
+                <!-- /.row -->
+
+
+                <!-- /.container -->
+
+                <!-- Footer -->
+
+
+                <!-- Bootstrap core JavaScript -->
+        </body>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-6">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-1 text-center text-white">Agronelas LDA</p>
+        </div>
+        <!-- /.container -->
+    </footer>
+</html>
